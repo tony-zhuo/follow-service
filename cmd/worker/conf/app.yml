@@ -1,0 +1,8 @@
+follow_consumer:
+  name: "follow_consumer_worker"
+  enable: true
+  kafka_server_url:
+    - ""
+  worker_count: 1
+  topic: "follow"
+  group: "follow"
