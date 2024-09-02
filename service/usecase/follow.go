@@ -114,6 +114,8 @@ func (uc *FollowUc) Followers(ctx context.Context, req *model.SearchFollowerCond
 		return nil, err
 	}
 
+	// TODO: add data to cache
+
 	return data, nil
 }
 
@@ -135,6 +137,8 @@ func (uc *FollowUc) Followees(ctx context.Context, req *model.SearchFolloweeCond
 		return nil, err
 	}
 
+	// TODO: add data to cache
+
 	return data, nil
 }
 
@@ -155,6 +159,8 @@ func (uc *FollowUc) Friends(ctx context.Context, req *model.SearchFriendCond) ([
 		// logging
 		return nil, err
 	}
+
+	// TODO: add data to cache
 
 	return data, nil
 }
