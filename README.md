@@ -19,6 +19,7 @@
 │   └── worker/
 ├── doc/
 ├── pkg/
+├── protos/
 └── service/
     ├── model/
     ├── repository/
@@ -29,11 +30,10 @@
 - entry point(worker)：worker 的進入點，作為 kafka 的 consumer。
 - database：db 的 init schema 以及 migration 放置處。
 - delivery：整合 service 的層級，以及對外的交互介面會放在此處。
+- doc：放置文檔，包含 API 文檔。
+- pkg：專門放置一些內部套件。
+- protos：為放置 proto 檔的地方（實際應該要放在外部）。
 - service：專門用來放置核心邏輯的地方。
 
 ## 專案說明
-
-### rpc
-接口以及 parameter, response 可查閱 [follow.proto](./protos/follow.proto) 檔案
-
-### worker
+詳情可看 [doc](./doc/README.md)

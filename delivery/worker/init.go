@@ -30,7 +30,7 @@ func workerInit() {
 	db.Init(conf.DB)
 	redis.Init(conf.Redis)
 
-	Register(follow.FollowConsumerEnable(ctx))
+	Register(follow.FollowConsumerEnable(ctx, conf.App.FollowConsumer))
 }
 
 func Run() {
