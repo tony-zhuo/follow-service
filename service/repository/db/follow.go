@@ -121,8 +121,8 @@ func (repo *FollowRepo) Friends(ctx context.Context, cond *model.SearchFriendCon
 			ORDER BY created_at ASC
 			LIMIT ?;`
 
-	if cond.NextUserId != nil {
-		err = repo.db.Instance.Query(stmt, cond.UserId, cond.NextUserId, cond.Limit).WithContext(ctx).Scan(res)
+	if cond.NextFriendId != nil {
+		err = repo.db.Instance.Query(stmt, cond.UserId, cond.NextFriendId, cond.Limit).WithContext(ctx).Scan(res)
 	} else {
 		err = repo.db.Instance.Query(stmt, cond.UserId, 0, cond.Limit).WithContext(ctx).Scan(res)
 	}

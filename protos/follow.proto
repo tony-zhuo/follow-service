@@ -1,0 +1,78 @@
+syntax = "proto3";
+package follow;
+
+option go_package = "/data/otp";
+
+import "google/protobuf/timestamp.proto";
+
+service FollowService {
+  rpc Follow(FollowReq) returns (FollowResp);
+  rpc UnFollow(FollowReq) returns (FollowResp);
+  rpc Followers(FollowersReq) returns (FollowersResp);
+  rpc Followees(FolloweesReq) returns (FolloweesResp);
+  rpc Friends(FriendsReq) returns (FriendsResp);
+}
+
+message FollowReq {
+  string follower_id = 1;
+  string followee_id = 2;
+}
+
+message FollowResp {
+  CommonResp Resp = 1;
+}
+
+message FollowersReq {
+  string user_id = 1;
+  optional string next_user_id = 2;
+  optional int64 next_timestamp = 3;
+  int32 limit = 4;
+}
+
+message FollowersResp {
+  CommonResp Resp = 1;
+  repeated Follow data = 2;
+}
+
+message FolloweesReq {
+  string user_id = 1;
+  optional string next_user_id = 2;
+  optional int64 next_timestamp = 3;
+  int32 limit = 4;
+}
+
+message FolloweesResp {
+  CommonResp Resp = 1;
+  repeated Follow data = 2;
+}
+
+message FriendsReq {
+  string user_id = 1;
+  optional string next_friend_id = 2;
+  optional int64 next_timestamp = 3;
+  int32 limit = 4;
+}
+
+message FriendsResp {
+  CommonResp Resp = 1;
+  repeated Friend data = 2;
+}
+
+// schema
+
+message CommonResp {
+  int32 code = 1;
+  string msg = 2;
+}
+
+message Follow {
+  string follower_id = 1;
+  string followee_id = 2;
+  google.protobuf.Timestamp created_at = 3;
+}
+
+message Friend {
+  string user_id = 1;
+  string friend_id = 2;
+  google.protobuf.Timestamp created_at = 3;
+}

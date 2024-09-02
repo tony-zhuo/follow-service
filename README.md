@@ -34,6 +34,6 @@
 ## 專案說明
 
 ### rpc
-
+接口以及 parameter, response 可查閱 [follow.proto](./protos/follow.proto) 檔案
 
 ### worker
