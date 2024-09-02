@@ -191,3 +191,13 @@ func (repo *FollowRepo) UpsertConsumerTime(ctx context.Context, key string, valu
 
 	return err
 }
+
+func (repo *FollowRepo) StoreFollows(ctx context.Context, key string, data []*model.Follow) error {
+
+	return nil
+}
+
+func (repo *FollowRepo) StoreFriends(ctx context.Context, key string, data []*model.Friend) error {
+
+	return nil
+}

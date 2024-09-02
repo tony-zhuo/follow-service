@@ -114,7 +114,10 @@ func (uc *FollowUc) Followers(ctx context.Context, req *model.SearchFollowerCond
 		return nil, err
 	}
 
-	// TODO: add data to cache
+	key := fmt.Sprintf("%s:%s", model.CacheKey_Followers, req.UserId)
+	if err := uc.cacheRepo.StoreFollows(ctx, key, data); err != nil {
+		// logging
+	}
 
 	return data, nil
 }
@@ -137,7 +140,10 @@ func (uc *FollowUc) Followees(ctx context.Context, req *model.SearchFolloweeCond
 		return nil, err
 	}
 
-	// TODO: add data to cache
+	key := fmt.Sprintf("%s:%s", model.CacheKey_Followees, req.UserId)
+	if err := uc.cacheRepo.StoreFollows(ctx, key, data); err != nil {
+		// logging
+	}
 
 	return data, nil
 }
@@ -160,7 +166,10 @@ func (uc *FollowUc) Friends(ctx context.Context, req *model.SearchFriendCond) ([
 		return nil, err
 	}
 
-	// TODO: add data to cache
+	key := fmt.Sprintf("%s:%s", model.CacheKey_Friends, req.UserId)
+	if err := uc.cacheRepo.StoreFriends(ctx, key, data); err != nil {
+		// logging
+	}
 
 	return data, nil
 }

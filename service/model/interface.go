@@ -48,6 +48,12 @@ type FollowCacheRepoInterface interface {
 
 	// UpsertConsumerTime 更新或新增 consumer 的 cache time
 	UpsertConsumerTime(ctx context.Context, key string, value time.Time) error
+
+	// StoreFollows 將 follow 列表存在 cache
+	StoreFollows(ctx context.Context, key string, data []*Follow) error
+
+	// StoreFriends 將 friend 列表存在 cache
+	StoreFriends(ctx context.Context, key string, data []*Friend) error
 }
 
 type FollowDBRepoInterface interface {
