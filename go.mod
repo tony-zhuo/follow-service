@@ -3,20 +3,23 @@ module github.com/tony-zhuo/follow-service
 go 1.23.0
 
 require (
-	github.com/fsnotify/fsnotify v1.7.0
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/gocql/gocql v1.6.0
 	github.com/segmentio/kafka-go v0.4.47
 	github.com/spf13/viper v1.19.0
 	go.elastic.co/apm/module/apmgoredisv8/v2 v2.6.2
+	go.elastic.co/apm/module/apmgrpc/v2 v2.6.2
+	google.golang.org/grpc v1.62.1
 )
 
 require (
 	github.com/armon/go-radix v1.0.0 // indirect
-	github.com/cespare/xxhash/v2 v2.1.2 // indirect
+	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/elastic/go-sysinfo v1.7.1 // indirect
 	github.com/elastic/go-windows v1.0.0 // indirect
+	github.com/fsnotify/fsnotify v1.7.0 // indirect
+	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/golang/snappy v0.0.3 // indirect
 	github.com/hailocab/go-hostpool v0.0.0-20160125115350-e80d13ce29ed // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
@@ -35,6 +38,7 @@ require (
 	github.com/spf13/cast v1.6.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/subosito/gotenv v1.6.0 // indirect
+	go.elastic.co/apm/module/apmhttp/v2 v2.6.2 // indirect
 	go.elastic.co/apm/v2 v2.6.2 // indirect
 	go.elastic.co/fastjson v1.1.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
@@ -43,6 +47,7 @@ require (
 	golang.org/x/net v0.25.0 // indirect
 	golang.org/x/sys v0.20.0 // indirect
 	golang.org/x/text v0.15.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240314234333-6e1732d8331c // indirect
 	google.golang.org/protobuf v1.34.2 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect

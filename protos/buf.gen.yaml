@@ -1,0 +1,16 @@
+version: v1
+managed:
+  enabled: true
+  go_package_prefix:
+    default: follow-service/protos/data
+
+plugins:
+  - plugin: go
+    out: data/
+    opt:
+      - paths=source_relative
+  - plugin: go-grpc
+    out: data/
+    opt:
+      - paths=source_relative
+      - require_unimplemented_servers=false
