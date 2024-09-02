@@ -8,7 +8,28 @@
 ![image](./doc/arch.jpg)
 
 ## 程式碼架構
+```text
+.
+├── cmd/
+│   ├── rpc/
+│   └── worker/
+├── database/
+├── delivery/
+│   ├── rpc/
+│   └── worker/
+├── doc/
+├── pkg/
+└── service/
+    ├── model/
+    ├── repository/
+    └── usecase
+```
 
+- entry point(rpc)：rpc 接口的進入點，提供給其他服務使用（proto 檔尚未建置）。
+- entry point(worker)：worker 的進入點，作為 kafka 的 consumer。
+- database：db 的 init schema 以及 migration 放置處。
+- delivery：整合 service 的層級，以及對外的交互介面會放在此處。
+- service：專門用來放置核心邏輯的地方。
 
 ## 專案說明
 
