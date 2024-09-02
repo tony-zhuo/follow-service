@@ -193,11 +193,22 @@ func (repo *FollowRepo) UpsertConsumerTime(ctx context.Context, key string, valu
 }
 
 func (repo *FollowRepo) StoreFollows(ctx context.Context, key string, data []*model.Follow) error {
+	for _, item := range data {
+		repo.cache.ZAdd(ctx, key, &redis.Z{
+			Score:  float64(item.CreatedAt.UnixNano()),
+			Member: item,
+		})
+	}
 
 	return nil
 }
 
 func (repo *FollowRepo) StoreFriends(ctx context.Context, key string, data []*model.Friend) error {
-
+	for _, item := range data {
+		repo.cache.ZAdd(ctx, key, &redis.Z{
+			Score:  float64(item.CreatedAt.UnixNano()),
+			Member: item,
+		})
+	}
 	return nil
 }
