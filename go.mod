@@ -1,6 +1,6 @@
 module github.com/tony-zhuo/follow-service
 
-go 1.23.0
+go 1.23
 
 require (
 	github.com/go-redis/redis/v8 v8.11.5
@@ -10,6 +10,7 @@ require (
 	go.elastic.co/apm/module/apmgoredisv8/v2 v2.6.2
 	go.elastic.co/apm/module/apmgrpc/v2 v2.6.2
 	google.golang.org/grpc v1.62.1
+	google.golang.org/protobuf v1.34.2
 )
 
 require (
@@ -48,7 +49,6 @@ require (
 	golang.org/x/sys v0.20.0 // indirect
 	golang.org/x/text v0.15.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240314234333-6e1732d8331c // indirect
-	google.golang.org/protobuf v1.34.2 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
