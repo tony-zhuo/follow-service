@@ -37,6 +37,7 @@ func NewFollowUc(dbRepo model.FollowDBRepoInterface, cacheRepo model.FollowCache
 }
 
 // Follow 關注
+// 關注後會先存在 cache，並且丟到 kafka 進行後續處理
 func (uc *FollowUc) Follow(ctx context.Context, req *model.FollowRequest) error {
 	now := time.Now()
 	// cache
@@ -49,7 +50,7 @@ func (uc *FollowUc) Follow(ctx context.Context, req *model.FollowRequest) error 
 		return err
 	}
 
-	// kafkax
+	// kafka
 	key := fmt.Sprintf("%s_%s_%s_%d", model.Action_Follow, req.FollowerId, req.FolloweeId, now.UnixNano())
 	data, _ := json.Marshal(req)
 	msg := pkgKafka.NewMsg("", []byte(key), data)
@@ -66,7 +67,18 @@ func (uc *FollowUc) Follow(ctx context.Context, req *model.FollowRequest) error 
 	return nil
 }
 
+// FollowInDB 關注
+func (uc *FollowUc) FollowInDB(ctx context.Context, req *model.FollowRequest) error {
+	if err := uc.dbRepo.Follow(ctx, req); err != nil {
+		// logging
+		return err
+	}
+
+	return nil
+}
+
 // UnFollow 取消關注
+// 取消關注後會先存在 cache，並且丟到 kafka 進行後續處理
 func (uc *FollowUc) UnFollow(ctx context.Context, req *model.FollowRequest) error {
 	now := time.Now()
 	// cache
@@ -90,6 +102,16 @@ func (uc *FollowUc) UnFollow(ctx context.Context, req *model.FollowRequest) erro
 			FolloweeId: req.FolloweeId,
 			CreatedAt:  now,
 		})
+		return err
+	}
+
+	return nil
+}
+
+// UnFollowInDB 取消關注
+func (uc *FollowUc) UnFollowInDB(ctx context.Context, req *model.FollowRequest) error {
+	if err := uc.dbRepo.UnFollow(ctx, req); err != nil {
+		// logging
 		return err
 	}
 

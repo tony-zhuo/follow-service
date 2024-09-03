@@ -7,10 +7,18 @@ import (
 
 type FollowUcInterface interface {
 	// Follow 關注
+	// 關注後會先存在 cache，並且丟到 kafka 進行後續處理
 	Follow(ctx context.Context, req *FollowRequest) error
 
+	// FollowInDB 關注
+	FollowInDB(ctx context.Context, req *FollowRequest) error
+
 	// UnFollow 取消關注
+	// 取消關注後會先存在 cache，並且丟到 kafka 進行後續處理
 	UnFollow(ctx context.Context, req *FollowRequest) error
+
+	// UnFollowInDB 取消關注
+	UnFollowInDB(ctx context.Context, req *FollowRequest) error
 
 	// Followers 粉絲清單（分頁）
 	Followers(ctx context.Context, req *SearchFollowerCond) ([]*Follow, error)

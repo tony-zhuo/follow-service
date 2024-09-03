@@ -81,12 +81,12 @@ func (w *FollowWorker) Exec(ctx context.Context) error {
 
 			switch action {
 			case model.Action_Follow:
-				if err := w.followUc.Follow(ctx, obj); err != nil {
+				if err := w.followUc.FollowInDB(ctx, obj); err != nil {
 					// logging
 					continue
 				}
 			case model.Action_UnFollow:
-				if err := w.followUc.UnFollow(ctx, obj); err != nil {
+				if err := w.followUc.UnFollowInDB(ctx, obj); err != nil {
 					// logging
 					continue
 				}
