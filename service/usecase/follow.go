@@ -177,9 +177,9 @@ func (uc *FollowUc) Friends(ctx context.Context, req *model.SearchFriendCond) ([
 // CheckAndSyncConsumerTime
 // 如果傳入的時間比 cache 的早，則回傳 false
 // 如果傳入的時間比 cache 的晚，則回傳 ture 並且將 cache 的時間更新為傳入的時間
-func (repo *FollowUc) CheckAndSyncConsumerTime(ctx context.Context, t time.Time) bool {
+func (uc *FollowUc) CheckAndSyncConsumerTime(ctx context.Context, t time.Time) bool {
 	key := ""
-	data, err := repo.cacheRepo.GetConsumerTime(ctx, key)
+	data, err := uc.cacheRepo.GetConsumerTime(ctx, key)
 	if err != nil {
 		// logging
 		return false
@@ -189,7 +189,7 @@ func (repo *FollowUc) CheckAndSyncConsumerTime(ctx context.Context, t time.Time)
 		return false
 	}
 
-	if err := repo.cacheRepo.UpsertConsumerTime(ctx, key, t); err != nil {
+	if err := uc.cacheRepo.UpsertConsumerTime(ctx, key, t); err != nil {
 		return false
 	}
 
