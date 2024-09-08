@@ -5,12 +5,8 @@
 2. 採取分頁方式返回粉絲清單、關注列表、好友列表(互相關注)。
 
 ## 系統架構
-- 流程1（下方圖示）：application 接到 follow 或是 unfollow 時，會將資訊先存在 cache，
-</br>
-存到 cache 後會將 message 丟到 kafka，再由 worker 將 message 接出來進行持久化儲存。
-- 流程2：application 接到 followers, followees, friends 的列表請求時，會先從 cache 確認有無資料，
-</br>
-有則回傳資料，無則才進 Cassandra 取資料，從 Cassandra 取完資料後，再將資料存進 cache 內。
+- 流程1（下方圖示）：application 接到 follow 或是 unfollow 時，會將資訊先存在 cache， 存到 cache 後會將 message 丟到 kafka，再由 worker 將 message 接出來進行持久化儲存。
+- 流程2：application 接到 followers, followees, friends 的列表請求時，會先從 cache 確認有無資料，有則回傳資料，無則才進 Cassandra 取資料，從 Cassandra 取完資料後，再將資料存進 cache 內。
 
 ![image](./doc/arch.jpg)
 
